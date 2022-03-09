@@ -24,18 +24,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
     ref.watch(passwordProvider.state).state = pass.toString().trim();
   }
 
-  //  A loading variable to show the loading animation when you a function is ongoing
   bool _isLoading = false;
-  bool _isLoading2 = false;
   void loading() {
     setState(() {
       _isLoading = !_isLoading;
-    });
-  }
-
-  void loading2() {
-    setState(() {
-      _isLoading2 = !_isLoading2;
     });
   }
 
@@ -55,6 +47,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
         return;
       }
       loading();
+      print(email.toString().trim());
+      print(pass.toString().trim());
+
       await _auth
           .signIn(email.toString().trim(), pass.toString().trim())
           .whenComplete(() => _auth.authStateChange.listen((event) async {
@@ -217,75 +212,4 @@ class LoginPageState extends ConsumerState<LoginPage> {
       ),
     );
   }
-
-//     return Scaffold(
-
-// resizeToAvoidBottomInset: false,
-
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Text(
-//             'Login',
-//             style: TextStyle(
-//               fontSize: 24,
-//             ),
-//           ),
-//           TextField(
-//             onChanged: (value) => updateEmail(ref, value),
-//             autocorrect: true,
-//             enableSuggestions: true,
-//             keyboardType: TextInputType.emailAddress,
-//             // controller: emailController,
-//             // onSubmitted: (value) => emailController.text = value,
-//             decoration: InputDecoration(
-//               hintText: 'Email address',
-//               hintStyle: const TextStyle(color: Colors.black54),
-//               icon: Icon(Icons.email_outlined,
-//                   color: Colors.blue.shade700, size: 24),
-//               alignLabelWithHint: true,
-//               //border: InputBorder.none,
-//             ),
-//             // validator: (value) {
-//             //   if (value!.isEmpty || !value.contains('@')) {
-//             //     return 'Invalid email!';
-//             //   }
-//             //   return null;
-//             // },
-//           ),
-//           TextField(
-//             // controller: passwordController,
-
-//             onChanged: (value) => updatePassword(ref, value),
-//             obscureText: true,
-//             decoration: InputDecoration(
-//               hintText: 'Password',
-//             ),
-//           ),
-//           // ignore: deprecated_member_use
-//           RaisedButton(
-//             onPressed: () => //print(email.toString()),
-//                 //print(pass),
-//                 //print(ref.watch(emailProvider.state).state)
-//                 _auth.signIn(email, pass),
-
-//             // _auth.signIn(email, pass),
-//             child: Text('Sign-in'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
 }
-
-// Future<String?> signIn(String email, String password) async {
-//     try {
-//       await _firebaseAuth.signInWithEmailAndPassword(
-//         email: email,
-//         password: password,
-//       );
-//       return "Login Successful";
-//     } on FirebaseAuthException catch (e) {
-//       return e.message;
-//     }
-//   }
