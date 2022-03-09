@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, body_might_complete_normally_nullable, avoid_print, unnecessary_question_mark
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,16 +26,9 @@ class RegisterUserPageState extends ConsumerState<RegisterUserPage> {
   }
 
   bool _isLoading = false;
-  bool _isLoading2 = false;
   void loading() {
     setState(() {
       _isLoading = !_isLoading;
-    });
-  }
-
-  void loading2() {
-    setState(() {
-      _isLoading2 = !_isLoading2;
     });
   }
 
@@ -53,33 +44,25 @@ class RegisterUserPageState extends ConsumerState<RegisterUserPage> {
       }
       loading();
 
-      _authFirebase
+      await _authFirebase
           .userSignUp(emailNewUser.toString().trim(),
               passwordNewUser.toString().trim(), context)
-          .whenComplete(() => Future.delayed(Duration(seconds: 4), () {
-                _authFirebase.authStateChange.listen((event) async {
-                  _authFirebase
-                      .signIn(emailNewUser.toString().trim(), passwordNewUser)
-                      .whenComplete(() =>
-                          _authFirebase.authStateChange.listen((event) async {
-                            print('i am here');
+          .whenComplete(
+              () => _authFirebase.authStateChange.listen((event) async {
+                    if (event == null) {
+                      print(emailNewUser.toString().trim());
 
-                            if (event == null) {
-                              print('inside');
-                              loading();
-                              return;
-                            } //       MaterialPageRoute(builder: (context) => HomePage()),
+                      loading();
+                      return;
+                    } //       MaterialPageRoute(builder: (context) => HomePage()),
 
-                            else {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()),
-                                  (route) => false);
-                            }
-                          }));
-                });
-              }));
+                    else {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (route) => false);
+                    }
+                  }));
     }
 
     //** SignUpButton Material button
