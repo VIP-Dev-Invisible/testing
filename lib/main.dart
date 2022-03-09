@@ -11,7 +11,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,7 +68,7 @@ class AuthChecker extends ConsumerWidget {
       error: (_, __) {
         return Scaffold(
           body: Center(
-            child: Text("OOPS"),
+            child: Text("Unknown Error occured!"),
           ),
         );
       },
