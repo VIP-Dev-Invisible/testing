@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "551372843373",
+    "project_id": "fmyt-66cc3",
+    "storage_bucket": "fmyt-66cc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551372843373:android:0278b0e64929e10e691264",
+        "android_client_info": {
+          "package_name": "com.example.teacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551372843373-2nehdjebg5jcnunv76l76olrcvki0t5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teacher",
+            "certificate_hash": "25547eba0517beb127ddef3204ed536d3d560e7c"
+          }
+        },
+        {
+          "client_id": "551372843373-uraqbd6b6671m6e2580bhlkd1c3vmv0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC22MjqNV2qxCdXxtcH0-UvthoYxVNcNsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551372843373-uraqbd6b6671m6e2580bhlkd1c3vmv0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
